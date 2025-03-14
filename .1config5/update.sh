@@ -7,7 +7,7 @@ shopt -s expand_aliases
 alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'
 
 # Get list of all tracked files in the repo except update.sh itself
-repo_files=$(1config5 ls-files | grep -v ".update.sh")
+repo_files=$(1config5 ls-tree -r main --name-only | grep -v ".update.sh")
 
 # Process each file
 for file in $repo_files; do
@@ -38,7 +38,7 @@ for file in $repo_files; do
   else
     # File doesn't exist locally, safe to checkout
     echo "Checking out $file..."
-    1config5 checkout -- $file
+    1config5 checkout HEAD -- $file
   fi
 done
 

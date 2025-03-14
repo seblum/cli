@@ -3,9 +3,6 @@ echo "Cloning and setting up dotfiles..."
 git clone --bare git@github.com:seblum/cli.git $HOME/.1config5-git
 alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'
 
-# Not sure why I need this, but otherwise it doesn't recognize the files
-# 1config5 reset --hard 
-
 # Force checkout only the update script
 1config5 checkout HEAD -- .1config5/update.sh
 
