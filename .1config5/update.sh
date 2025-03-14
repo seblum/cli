@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Define the git alias 
+# Enable alias expansion in non-interactive shell
+shopt -s expand_aliases
+
+# Define the git alias
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Get list of all tracked files in the repo except update.sh itself

@@ -4,13 +4,16 @@ git clone --bare git@github.com:seblum/cli.git $HOME/.cfg
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Force checkout only the update script
-cfg checkout -f -- .update.sh
+# might need a cfg reset --hard 
+cfg checkout -- .1config5/update.sh
 
 # Make it executable
-chmod +x $HOME/.update.sh
+chmod +x $HOME/.1config5/update.sh
 
 # Run the update script to handle the remaining files
 echo "Running update script to resolve conflicts..."
-$HOME/.update.sh
+bash $HOME/.1config5/update.sh
+
+source "$HOME/.bashrc"
 
 echo "Dotfiles setup complete!"
