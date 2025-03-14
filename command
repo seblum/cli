@@ -8,7 +8,7 @@ cfg checkout
 
 # Call the external script for additional setup
 echo "Running cfg setup script..."
-bash "$HOME/.cfg/setup.sh"
+bash "$HOME/.setup.sh"
 
 # Checkout the dotfiles
 cfg checkout
