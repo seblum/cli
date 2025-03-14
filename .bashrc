@@ -1,7 +1,7 @@
 # PATH=/Users/sebastian.blum/Documents/dataplatform/
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-1k5-setup() {
+1config5-setup() {
     echo "Updating dotfiles repository..."
     # Pull latest changes from the main branch
     /usr/bin/git --git-dir="$HOME/.1config5-git/" --work-tree="$HOME" pull origin main
@@ -15,7 +15,7 @@
     fi
 }
 
-1k5-update() {
+1config5-update() {
     # Enable alias expansion in non-interactive shell
     shopt -s expand_aliases
 

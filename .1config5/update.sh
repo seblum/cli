@@ -37,7 +37,7 @@ for file in $repo_files; do
     1config5 update-index --assume-unchanged $file
   else
     # File doesn't exist locally, safe to checkout
-    echo "Checking out $file..."
+    echo "Updating & merging $file..."
     1config5 checkout HEAD -- $file
   fi
 done
