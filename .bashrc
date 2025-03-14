@@ -7,9 +7,9 @@
     /usr/bin/git --git-dir="$HOME/.1config5-git/" --work-tree="$HOME" pull origin main
 
     # Check if setup.sh exists and run it
-    if [ -f "$HOME/.1config5-git/.1config5/setup.sh" ]; then
+    if [ -f "$HOME/.1config5/setup.sh" ]; then
         echo "Running setup.sh from repository..."
-        bash "$HOME/.1config5-git/.1config5/setup.sh"
+        bash "$HOME/.1config5/setup.sh"
     else
         echo ".1config5/setup.sh not found in repository."
     fi
