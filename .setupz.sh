@@ -4,7 +4,7 @@
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Get list of all tracked files in the repo except update.sh itself
-repo_files=$(cfg ls-files | grep -v "update.sh")
+repo_files=$(cfg ls-files | grep -v ".update.sh")
 
 # Process each file
 for file in $repo_files; do

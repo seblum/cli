@@ -11,6 +11,6 @@ chmod +x $HOME/.update.sh
 
 # Run the update script to handle the remaining files
 echo "Running update script to resolve conflicts..."
-$HOME/update.sh
+$HOME/.update.sh
 
 echo "Dotfiles setup complete!"
