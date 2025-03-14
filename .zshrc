@@ -25,17 +25,16 @@
     1config5 pull origin main
 
     # Force checkout only the update script
-    # Might need a 1config5 reset --hard
-    1config5 checkout -- .1config5/update.sh
+    1config5 checkout HEAD -- .1config5/update.sh
 
     # Make it executable
-    chmod +x "$HOME/.1config5/update.sh"
+    chmod +x $HOME/.1config5/update.sh
 
     # Run the update script to handle the remaining files
     echo "Running update script to resolve conflicts..."
-    zsh "$HOME/.1config5/update.sh"
+    bash $HOME/.1config5/update.sh
 
     source "$HOME/.zshrc"
-
+    
     echo "Update complete!"
 }

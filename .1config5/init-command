@@ -14,5 +14,6 @@ echo "Running update script to resolve conflicts..."
 bash $HOME/.1config5/update.sh
 
 source "$HOME/.bashrc"
+source "$HOME/.zshrc"
 
 echo "Dotfiles setup complete!"
