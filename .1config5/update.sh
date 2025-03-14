@@ -6,6 +6,8 @@ shopt -s expand_aliases
 # Define the git alias
 alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'
 
+1config5 ls-files --error-unmatch $HOME/.bashrc $HOME/.zshrc
+
 # Get list of all tracked files in the repo except update.sh itself
 repo_files=$(1config5 ls-tree -r main --name-only | grep -v ".update.sh")
 
