@@ -1,18 +1,17 @@
 # PATH=/Users/sebastian.blum/Documents/dataplatform/
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# cfg function for dotfiles management
 1k5-setup() {
     echo "Updating dotfiles repository..."
     # Pull latest changes from the main branch
-    /usr/bin/git --git-dir="$HOME/.cfg/" --work-tree="$HOME" pull origin main
+    /usr/bin/git --git-dir="$HOME/.1config5-git/" --work-tree="$HOME" pull origin main
 
-    # Check if install.sh exists and run it
-    if [ -f "$HOME/.cfg/.1config5/install.sh" ]; then
-        echo "Running install.sh from repository..."
-        bash "$HOME/.cfg/.1config5/install.sh"
+    # Check if setup.sh exists and run it
+    if [ -f "$HOME/.1config5-git/.1config5/setup.sh" ]; then
+        echo "Running setup.sh from repository..."
+        bash "$HOME/.1config5-git/.1config5/setup.sh"
     else
-        echo ".1config5/install.sh not found in repository."
+        echo ".1config5/setup.sh not found in repository."
     fi
 }
 
@@ -21,14 +20,14 @@
     shopt -s expand_aliases
 
     # Define the git alias
-    alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+    alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'
 
     # Clone dotfiles repo and apply configurations
-    cfg pull origin main
+    1config5 pull origin main
 
     # Force checkout only the update script
-    # might need a cfg reset --hard 
-    cfg checkout -- .1config5/update.sh
+    # might need a 1config5 reset --hard 
+    1config5 checkout -- .1config5/update.sh
 
     # Make it executable
     chmod +x $HOME/.1config5/update.sh
@@ -42,4 +41,4 @@
     echo "Update complete!"
 }
 
-alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'

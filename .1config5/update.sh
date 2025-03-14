@@ -4,10 +4,10 @@
 shopt -s expand_aliases
 
 # Define the git alias
-alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'
 
 # Get list of all tracked files in the repo except update.sh itself
-repo_files=$(cfg ls-files | grep -v ".update.sh")
+repo_files=$(1config5 ls-files | grep -v ".update.sh")
 
 # Process each file
 for file in $repo_files; do
@@ -20,7 +20,7 @@ for file in $repo_files; do
     mkdir -p "$temp_file_dir"
     
     # Create temp file with repo version in the correct directory
-    cfg show HEAD:$file > "$temp_file_dir/$(basename $file)"
+    1config5 show HEAD:$file > "$temp_file_dir/$(basename $file)"
     
     # Backup existing file
     cp $HOME/$file $HOME/$file.backup
@@ -34,11 +34,11 @@ for file in $repo_files; do
     rm "$temp_file_dir/$(basename $file)"
     
     # Mark as assume-unchanged
-    cfg update-index --assume-unchanged $file
+    1config5 update-index --assume-unchanged $file
   else
     # File doesn't exist locally, safe to checkout
     echo "Checking out $file..."
-    cfg checkout -- $file
+    1config5 checkout -- $file
   fi
 done
 

@@ -1,13 +1,13 @@
 # Clone dotfiles repo and apply configurations
 echo "Cloning and setting up dotfiles..."
-git clone --bare git@github.com:seblum/cli.git $HOME/.cfg
-alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+git clone --bare git@github.com:seblum/cli.git $HOME/.1config5-git
+alias 1config5='/usr/bin/git --git-dir=$HOME/.1config5-git/ --work-tree=$HOME'
 
 # Not sure why I need this, but otherwise it doesn't recognize the files
-cfg reset --hard 
+1config5 reset --hard 
 
 # Force checkout only the update script
-cfg checkout -- .1config5/update.sh
+1config5 checkout -- .1config5/update.sh
 
 # Make it executable
 chmod +x $HOME/.1config5/update.sh
