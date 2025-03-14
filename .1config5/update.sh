@@ -13,10 +13,14 @@ repo_files=$(cfg ls-files | grep -v ".update.sh")
 for file in $repo_files; do
   # Check if the file exists locally
   if [ -f "$HOME/$file" ]; then
-    echo "Merging $file..."
+    echo "Updating & merging $file..."
     
-    # Create temp file with repo version
-    cfg show HEAD:$file > /tmp/repo_$file
+    # Ensure the subdirectories in /tmp are created
+    temp_file_dir="/tmp/repo_$(dirname "$file")"
+    mkdir -p "$temp_file_dir"
+    
+    # Create temp file with repo version in the correct directory
+    cfg show HEAD:$file > "$temp_file_dir/$(basename $file)"
     
     # Backup existing file
     cp $HOME/$file $HOME/$file.backup
@@ -24,10 +28,10 @@ for file in $repo_files; do
     # Append repo content to existing file
     echo "" >> $HOME/$file
     echo "# Added from dotfiles repo on $(date)" >> $HOME/$file
-    cat /tmp/repo_$file >> $HOME/$file
+    cat "$temp_file_dir/$(basename $file)" >> $HOME/$file
     
     # Clean up
-    rm /tmp/repo_$file
+    rm "$temp_file_dir/$(basename $file)"
     
     # Mark as assume-unchanged
     cfg update-index --assume-unchanged $file

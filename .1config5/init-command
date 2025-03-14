@@ -3,8 +3,10 @@ echo "Cloning and setting up dotfiles..."
 git clone --bare git@github.com:seblum/cli.git $HOME/.cfg
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# Not sure why I need this, but otherwise it doesn't recognize the files
+cfg reset --hard 
+
 # Force checkout only the update script
-# might need a cfg reset --hard 
 cfg checkout -- .1config5/update.sh
 
 # Make it executable

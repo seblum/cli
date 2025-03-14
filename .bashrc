@@ -8,32 +8,38 @@
     /usr/bin/git --git-dir="$HOME/.cfg/" --work-tree="$HOME" pull origin main
 
     # Check if install.sh exists and run it
-    if [ -f "$HOME/.cfg/.install.sh" ]; then
+    if [ -f "$HOME/.cfg/.1config5/install.sh" ]; then
         echo "Running install.sh from repository..."
-        bash "$HOME/.cfg/.install.sh"
+        bash "$HOME/.cfg/.1config5/install.sh"
     else
-        echo "install.sh not found in repository."
+        echo ".1config5/install.sh not found in repository."
     fi
 }
 
 1k5-update() {
+    # Enable alias expansion in non-interactive shell
+    shopt -s expand_aliases
+
+    # Define the git alias
+    alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
     # Clone dotfiles repo and apply configurations
     cfg pull origin main
 
     # Force checkout only the update script
     # might need a cfg reset --hard 
-    cfg checkout -- .update.sh
+    cfg checkout -- .1config5/update.sh
 
     # Make it executable
-    chmod +x $HOME/.update.sh
+    chmod +x $HOME/.1config5/update.sh
 
     # Run the update script to handle the remaining files
     echo "Running update script to resolve conflicts..."
-    bash $HOME/.update.sh
+    bash $HOME/.1config5/update.sh
 
     source "$HOME/.bashrc"
 
-    echo "Dotfiles setup complete!"
+    echo "Update complete!"
 }
 
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
